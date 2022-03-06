@@ -10,7 +10,7 @@ using UnityEngine;
 namespace EvolutionConfig
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.2")]
+    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.3")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     [R2API.Utils.R2APISubmoduleDependency(nameof(CommandHelper))]
     public class EvolutionConfig : BaseUnityPlugin
@@ -36,10 +36,10 @@ namespace EvolutionConfig
                 c.GotoNext(
                      x => x.MatchCallvirt<Inventory>("GiveItem")
                     );
-                c.Emit(OpCodes.Ldloc_0);    //ItemTier
-                c.EmitDelegate<Func<int, ItemTier, int>>((itemCount, tier) =>
+                c.Emit(OpCodes.Ldloc_2);    //PickupDef
+                c.EmitDelegate<Func<int, PickupDef, int>>((itemCount, pickup) =>
                 {
-                    switch(tier)
+                    switch(pickup.itemTier)
                     {
                         case ItemTier.Tier1:
                         case ItemTier.VoidTier1:
