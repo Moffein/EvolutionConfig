@@ -10,7 +10,7 @@ using UnityEngine;
 namespace EvolutionConfig
 {
     [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.1")]
+    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.2")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     [R2API.Utils.R2APISubmoduleDependency(nameof(CommandHelper))]
     public class EvolutionConfig : BaseUnityPlugin
@@ -42,10 +42,13 @@ namespace EvolutionConfig
                     switch(tier)
                     {
                         case ItemTier.Tier1:
+                        case ItemTier.VoidTier1:
                             return whiteCount;
                         case ItemTier.Tier2:
+                        case ItemTier.VoidTier2:
                             return greenCount;
                         case ItemTier.Tier3:
+                        case ItemTier.VoidTier3:
                             return redCount;
                         default:
                             return itemCount;
@@ -54,23 +57,6 @@ namespace EvolutionConfig
             };
             R2API.Utils.CommandHelper.AddToConsoleWhenReady();
         }
-
-        /*private static void RegisterCommands(Action<RoR2.Console> orig, RoR2.Console self)
-        {
-            try
-            {
-                self.concommandCatalog["evolution_grantitems"] = new RoR2.Console.ConCommand
-                {
-                    action = EvolutionConfig_GrantItems,
-                    flags = ConVarFlags.SenderMustBeServer,
-                    helpText = "Add an item to the Evolution pool [ItemName, Count]"
-                };
-            }
-            catch { }
-
-            orig(self);
-        }*/
-
 
         [ConCommand(commandName = "evolution_additem", flags = ConVarFlags.ExecuteOnServer, helpText = "Add an item to Evolution. [string ItemName, int count]")]
         public static void EvolutionConfig_GrantItems(ConCommandArgs args)
@@ -97,7 +83,7 @@ namespace EvolutionConfig
             }
             else
             {
-                Debug.LogError("Item not found. If you have DebugToolkit installed, type list_item to view a list of all internal item names. You must enter the item name as it appears in the list.");
+                Debug.LogError("Item not found. If you have DebugToolkit installed, type list_item to view a list of all internal item names. You must enter the item name exactly as it appears in the list.");
             }
         }
         public static void GrantMonsterTeamItem(ItemIndex itemIndex, int count)
