@@ -9,10 +9,9 @@ using UnityEngine;
 
 namespace EvolutionConfig
 {
-    [BepInDependency("com.bepis.r2api")]
-    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.3")]
+    [BepInDependency(R2API.R2API.PluginGUID)]
+    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.4")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
-    [R2API.Utils.R2APISubmoduleDependency(nameof(CommandHelper))]
     public class EvolutionConfig : BaseUnityPlugin
     {
         public static int whiteCount = 1;
