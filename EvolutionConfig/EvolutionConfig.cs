@@ -7,10 +7,11 @@ using RoR2.Artifacts;
 using System;
 using UnityEngine;
 
+[assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EvolutionConfig
 {
     [BepInDependency(R2API.R2API.PluginGUID)]
-    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.4")]
+    [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.5")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class EvolutionConfig : BaseUnityPlugin
     {
