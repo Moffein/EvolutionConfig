@@ -65,15 +65,6 @@
     <Reference Include="MonoMod.Utils">
       <HintPath>libs\BepInEx\MonoMod.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="R2API">
-      <HintPath>libs\R2API\R2API.dll</HintPath>
-    </Reference>
-    <Reference Include="R2API.CommandHelper">
-      <HintPath>libs\R2API\R2API.CommandHelper.dll</HintPath>
-    </Reference>
-    <Reference Include="R2API.Core">
-      <HintPath>libs\R2API\R2API.Core.dll</HintPath>
-    </Reference>
     <Reference Include="RoR2">
       <HintPath>libs\RoR2.dll</HintPath>
     </Reference>

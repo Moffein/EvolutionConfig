@@ -1,7 +1,6 @@
 ﻿using BepInEx;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using R2API.Utils;
 using RoR2;
 using RoR2.Artifacts;
 using System;
@@ -10,9 +9,7 @@ using UnityEngine;
 [assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace EvolutionConfig
 {
-    [BepInDependency(R2API.R2API.PluginGUID)]
     [BepInPlugin("com.Moffein.EvolutionConfig", "Evolution Config", "1.0.5")]
-    [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     public class EvolutionConfig : BaseUnityPlugin
     {
         public static int whiteCount = 1;
@@ -55,7 +52,6 @@ namespace EvolutionConfig
                     }
                 });
             };
-            R2API.Utils.CommandHelper.AddToConsoleWhenReady();
         }
 
         [ConCommand(commandName = "evolution_additem", flags = ConVarFlags.ExecuteOnServer, helpText = "Add an item to Evolution. [string ItemName, int count]")]
@@ -90,5 +86,14 @@ namespace EvolutionConfig
         {
             MonsterTeamGainsItemsArtifactManager.monsterTeamInventory.GiveItem(itemIndex, count);
         }
+    }
+
+}
+
+namespace R2API.Utils
+{
+    [AttributeUsage(AttributeTargets.Assembly)]
+    public class ManualNetworkRegistrationAttribute : Attribute
+    {
     }
 }
